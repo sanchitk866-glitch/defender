@@ -110,6 +110,8 @@ h2 {
 }
 
 .btn-configure {
+  display: inline-block;
+  text-decoration: none;
   background: transparent;
   color: var(--text-primary);
   border: 1px solid var(--accent-gold);
