@@ -17,7 +17,7 @@ const nav = document.querySelector('.navigation');
 // Frame configuration
 const frameCount = 240;
 const currentFrame = index => (
-  `ezgif-frame-${(index + 1).toString().padStart(3, '0')}.jpg`
+  `frames/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.jpg`
 );
 
 const images = [];

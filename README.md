@@ -19,7 +19,7 @@ A hyper-premium, cinematic scrollytelling landing page showcasing the pure capab
 
 This is a static implementation. To run it locally:
 1. Clone the repository.
-2. Ensure you have the `ezgif-frame-001.jpg` to `ezgif-frame-240.jpg` assets located in your root directory.
+2. Ensure you have the `ezgif-frame-001.jpg` to `ezgif-frame-240.jpg` assets located in the `/frames/` directory.
 3. Open `index.html` in your favorite modern browser (or run via a simple local live server like `Live Server` plugin in VS Code).
 
 ## External Links
