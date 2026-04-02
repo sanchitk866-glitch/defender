@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defender V8 Bond Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <nav class="navigation">
+    <div class="nav-container">
+      <div class="nav-logo">Defender</div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#capability">Capability</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#specs">Specs</a>
+        <a href="#configure">Configure</a>
+      </div>
+      <div class="nav-cta">
+        <button class="btn-configure">Configure Your Defender</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="scroll-container">
+    <div class="sticky-container">
+      <!-- Glow gradient background behind canvas -->
+      <div class="glow-bg"></div>
+
+      <canvas id="hero-canvas"></canvas>
+
+      <!-- Step 1: 0-15% (Center) -->
+      <div class="scroll-step" id="step-1">
+        <div class="content-center">
+          <h1>Defender.</h1>
+          <p class="subheadline">Built for everywhere. Refined for anywhere.</p>
+          <p class="description">Above the road. Beyond expectation. The Defender V8 &mdash; re-engineered for those who demand both.</p>
+        </div>
+      </div>
+
+      <!-- Step 2: 15-40% (Left) -->
+      <div class="scroll-step" id="step-2">
+        <div class="content-left">
+          <h2>Engineered without compromise.</h2>
+          <p class="description">Every component stress-tested across deserts, arctic tundra, and mountain passes.</p>
+          <p class="description">From chassis to roof rack &mdash; built to outlast everything.</p>
+        </div>
+      </div>
+
+      <!-- Step 3: 40-65% (Right) -->
+      <div class="scroll-step" id="step-3">
+        <div class="content-right">
+          <h2>Terrain. Conquered.</h2>
+          <p class="description">Configurable air suspension adapts in milliseconds.</p>
+          <p class="description">900mm wading depth. Factory standard.</p>
+          <p class="description">Five terrain modes. One vehicle. Zero limits.</p>
+        </div>
+      </div>
+
+      <!-- Step 4: 65-85% (Left/Center) -->
+      <div class="scroll-step" id="step-4">
+        <div class="content-left alt-highlight">
+          <h2>525 horsepower. Untamed.</h2>
+          <p class="description">Supercharged V8 engine delivers 0&ndash;60 in 4.9 seconds.</p>
+          <p class="description">The same engine. The same road. A completely different feeling.</p>
+        </div>
+      </div>
+
+      <!-- Step 5: 85-100% (Center) -->
+      <div class="scroll-step" id="step-5">
+        <div class="content-center final-action">
+          <h1>Go further. Always.</h1>
+          <p class="subheadline">Defender V8. For those who never accepted boundaries.</p>
+          <div class="cta-group">
+            <button class="btn-configure large">Configure Your Defender</button>
+            <a href="#specs" class="link-secondary">Explore full specs</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

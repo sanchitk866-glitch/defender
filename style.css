@@ -1,0 +1,283 @@
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0A0A0C;
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --accent-green: #1B4D3E;
+  --accent-gold: #C8922A;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Details */
+h1 {
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.subheadline {
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.description {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Glassmorphism Navigation */
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 12, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transform: translateY(-100%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+  opacity: 0;
+}
+
+.navigation.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-gold);
+}
+
+.btn-configure {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--accent-gold);
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, rgba(200, 146, 42, 0) 0%, rgba(200, 146, 42, 0) 100%);
+}
+
+.btn-configure:hover {
+  background: rgba(200, 146, 42, 0.1);
+  box-shadow: 0 0 15px rgba(200, 146, 42, 0.3);
+}
+
+.btn-configure.large {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  background: var(--accent-gold);
+  color: #000;
+  border: none;
+}
+
+.btn-configure.large:hover {
+  background: #d8a23a;
+  box-shadow: 0 0 20px rgba(200, 146, 42, 0.5);
+}
+
+/* Scrollytelling Setup */
+.scroll-container {
+  height: 500vh; /* Determines exactly how long the user scrolls to complete animation */
+  position: relative;
+}
+
+.sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  background: radial-gradient(circle, rgba(27, 77, 62, 0.08) 0%, rgba(10, 8, 5, 0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100vw;
+  max-height: 100vh;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* Text Overlays */
+.scroll-step {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* Let clicks pass through to canvas or links */
+}
+
+/* We only make interactive elements pointer-events auto when visible */
+.scroll-step.active {
+  pointer-events: auto;
+}
+
+.content-center,
+.content-left,
+.content-right {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 2rem;
+}
+
+.scroll-step.active .content-center,
+.scroll-step.active .content-left,
+.scroll-step.active .content-right {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-center {
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 30px));
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+}
+.scroll-step.active .content-center {
+  transform: translate(-50%, -50%);
+}
+
+.content-left {
+  top: 50%;
+  left: 10%;
+  transform: translateY(calc(-50% + 30px));
+}
+.scroll-step.active .content-left {
+  transform: translateY(-50%);
+}
+
+.content-right {
+  top: 50%;
+  right: 10%;
+  transform: translateY(calc(-50% + 30px));
+  text-align: right;
+}
+.scroll-step.active .content-right {
+  transform: translateY(-50%);
+}
+.content-right .description {
+  margin-left: auto;
+}
+
+/* Modifier Highlights */
+.alt-highlight h2 {
+  background: linear-gradient(90deg, #fff, var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta-group {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link-secondary {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.link-secondary:hover {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2rem; }
+  .content-left { left: 5%; }
+  .content-right { right: 5%; }
+  .nav-links { display: none; }
+}
